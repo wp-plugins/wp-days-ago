@@ -2,7 +2,7 @@
 Contributors: vskjefst
 Tags: posts, pages, date, day, days
 Requires at least: 2.6
-Tested up to: 2.6.1
+Tested up to: 2.6.2
 Stable tag: trunk
 
 Displays the number of years and days since a post or page was written.
@@ -15,11 +15,11 @@ The plugin will only display years and days and will not take into account that 
 
 == Installation ==
 
-1. Download the plugin.
+1. [Download](http://downloads.wordpress.org/plugin/wp-days-ago.zip) the plugin.
 2. Unzip the contents of the downloaded file to the /wp-content/plugins/ directory of your Wordpress installation.
 3. Log in to your Wordpress dashboard and activate the wp_days_ago plugin that should now be visible in the list.
-4. You can now insert <? wp_days_ago(); ?> anywhere in The Loop in your Wordpress theme.
+4. You can now insert &lt;? wp_days_ago(); ?&gt; anywhere in The Loop in your Wordpress theme.
 
-The wp-days-ago plugin takes one parameter; the time zone offset between your Wordpress time zone settings and the server your Wordpress installation is running on. In my case I write everything in Central European Time, but the server is located in Sydney, Australia. That’s a -8 hour time zone offset from the server to my local time, and to get things right, I have to use -8 as the time zone offset parameter, like this: <? wp_days_ago(-8); ?>.
+The wp-days-ago plugin takes one parameter; the time zone offset between your Wordpress time zone settings and the server your Wordpress installation is running on. In my case I write everything in Central European Time, but the server is located in Sydney, Australia. That’s a -8 hour time zone offset from the server to my local time, and to get things right, I have to use -8 as the time zone offset parameter, like this: &lt;? wp_days_ago(-8); ?&gt;.
 
-URL: http://www.vegard.net/archives/1476/
+Plugin URL: [http://www.vegard.net/archives/1476/](http://www.vegard.net/archives/1476/)
