@@ -35,12 +35,15 @@ $append
  (string) (optional) This text will be appended to the plugin's default output.
  
 $texts
- (array) (optional) This array allows you to change the texts used by the plugin. This will, for instance, allow you to translate the output to your language. The default values are array("today", "yesterday", "one week ago", "days ago", "year", "years", "ago", " day ago", " days ago").
+ (array) (optional) This array allows you to change the texts used by the plugin. This will, for instance, allow you to translate the output to your language. The default values are array("Today", "Yesterday", "One week ago", "days ago", "year", "years", "ago", " day ago", " days ago").
 
 == Upgrade notice ==
 No changes to your theme or configuration are necessary when you upgrade from a previous version.
 
 == Changelog ==
+
+= 1.7.1 =
+* Changed some of the default texts so that they start with a capital letter.
 
 = 1.7 =
 * Backwards compatible all the way back to Wordpress 1.5.

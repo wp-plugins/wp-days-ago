@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: wp-days-ago
-Version: 1.7
+Version: 1.7.1
 Plugin URI: http://www.vegard.net/archives/1476/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
 Description: Displays the number of years and days since a post or page was written. 
 
-Copyright 2008  Vegard Skjefstad vegard@vegard.net
+Copyright 2008-2011 Vegard Skjefstad vegard@vegard.net
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function wp_days_ago ($offset = 0, $prepend = "", $append = "",
-		$texts = array("today", "yesterday", "one week ago", "days ago", "year",
+		$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
 			"years", "ago", " day ago", " days ago")) {
 		
 		$since = round((strtotime(date("Y-m-d", gmmktime() + (get_option('gmt_offset') * 3600))) - strtotime(date("Y-m-d", get_the_time("U")))) / 86400);
