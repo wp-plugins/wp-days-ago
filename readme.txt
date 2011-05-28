@@ -21,11 +21,6 @@ This plugin displays the number of years and days since a post or a page was pub
 
 Plugin URL: [http://www.vegard.net/archives/3530/](http://www.vegard.net/archives/3530/)
 
-== Upgrade notice ==
-No changes to your theme or configuration are necessary when you upgrade from a previous version.
-
-== Usage and parameters ==
-
 = Usage =
 `<?php wp_days_ago( $offset, $prepend, $append, $texts); ?>`
 
@@ -41,6 +36,9 @@ $append
  
 $texts
  (array) (optional) This array allows you to change the texts used by the plugin. This will, for instance, allow you to translate the output to your language. The default values are array("today", "yesterday", "one week ago", "days ago", "year", "years", "ago", " day ago", " days ago").
+
+== Upgrade notice ==
+No changes to your theme or configuration are necessary when you upgrade from a previous version.
 
 == Changelog ==
 
