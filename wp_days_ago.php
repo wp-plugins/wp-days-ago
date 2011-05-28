@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: wp-days-ago
-Version: 1.0
+Version: 1.7
 Plugin URI: http://www.vegard.net/archives/1476/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
@@ -24,36 +24,44 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-function wp_days_ago ($offset=0) {
-		$since = round((strtotime(date("Y-m-d", time() + ($offset * 3600))) - strtotime(date("Y-m-d", get_the_time("U")))) / 86400);
+function wp_days_ago ($offset = 0, $prepend = "", $append = "",
+		$texts = array("today", "yesterday", "one week ago", "days ago", "year",
+			"years", "ago", " day ago", " days ago")) {
+		
+		$since = round((strtotime(date("Y-m-d", gmmktime() + (get_option('gmt_offset') * 3600))) - strtotime(date("Y-m-d", get_the_time("U")))) / 86400);
 
-		if($since == 1)
-			$since = "yesterday";
-		elseif($since == 0)
-			$since = "today";
+		$output = $prepend;
+		
+		if($since == 0)
+			$output = $output . $texts[0];
+		elseif($since == 1)
+			$output = $output . $texts[1];
 		elseif($since == 7)
-			$since = "one week ago";
-		else
-			$since = $since . " days ago";
+			$output = $output . $texts[2];
+		else {
+			$years = floor($since / 365);
+			if($years > 0)
+			{
+				if($years == 1)
+					$yearappend = $texts[4];
+				else
+					$yearappend = $texts[5];
 
-		$years = substr($since / 365,0,1);
-		if($years != "0")
-		{
-			if($years == "1")
-				$yearappend = "year";
-			else
-				$yearappend = "years";
-
-			$days = $since - (365 * $years);
-			if($days == "0")
-				$since = $years . " " . $yearappend . " ago";
-			else if($days == "1")
-				$since = $years . " " . $yearappend . ", " . $days . " day ago";
-			else
-				$since = $years . " " . $yearappend . ", " . $days . " days ago";
+				$days = $since - (365 * $years);
+				if($days == 0)
+					$output = $output . $years . " " . $yearappend . " " . $texts[6];
+				else if($days == 1)
+					$output = $output . $years . " " . $yearappend . ", " . $days . " " . $texts[7];
+				else
+					$output = $output . $years . " " . $yearappend . ", " . $days . " " . $texts[8];
+			} else {
+				$output = $output . $since . " " . $texts[3];
+			}
 		}
 
-		echo $since;
+		$output = $output . $append;
+		
+		echo $output;
 }
 
 add_filter('Posts', 'wp_days_ago');
