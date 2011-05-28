@@ -2,7 +2,7 @@
 Contributors: vskjefst
 Tags: posts, pages, date, day, days
 Requires at least: 2.6
-Tested up to: 2.6.2
+Tested up to: 3.1.3
 Stable tag: trunk
 
 Displays the number of years and days since a post or page was written.
@@ -11,7 +11,7 @@ Displays the number of years and days since a post or page was written.
 
 My very first attempt on a Wordpress plugin is actually just a copy/past job from my own CMS. I wanted to get functionality I could not find in any other plugins: I simply wanted to display the number of days since a post or page was published.
 
-The plugin will only display years and days and will not take into account that 24 hours are one day. If you publish a page or a post at 23:59, it will be marked with “yesterday” at 00:00 even if it’s only a minute since you published. In some cases, the plugin will display a human readable text instead of the days count. Today is “today” and not “0 days ago”. Yesterday is, well, “yesterday”, while anything published seven days ago is posted “a week ago”. If an entry is more than a year old, the plugin will display the post date as "X year, Y days".
+The plugin will only display years and days and will not take into account that 24 hours are one day. If you publish a page or a post at 23:59, it will be marked with “yesterday” at 00:00 even if it’s only a minute since you published. In some cases, the plugin will display a human readable text instead of the days count. Today is “today” and not “0 days ago”. Yesterday is, well, “yesterday”, while anything published seven days ago is posted “a week ago”. If an entry is more than a year old, the plugin will display the post date as "X years, Y days".
 
 == Installation ==
 
