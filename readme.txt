@@ -3,14 +3,14 @@ Contributors: vskjefst
 Tags: posts, pages, date, day, days, relative date, days ago
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=4UXDX43P8V9EN&lc=NO&item_name=wp%2ddays%2dago&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 1.5
-Tested up to: 3.1.3
+Tested up to: 3.1.4
 Stable tag: trunk
 
-Displays the number of years and days since a post or page was written.
+Displays the number of years, days, hours and minutes since a post or a page was published.
 
 == Description ==
 
-This plugin displays the number of years and days since a post or a page was published. All calculations are based on days but it will not take into account that 24 hours are one day. If you publish a page or a post at 23:59, it will be marked with “yesterday” at 00:00 even if it's only a minute since you published. In some cases, the plugin will display a human readable text instead of the days count. Today is “today” and not “0 days ago”. Yesterday is, well, “yesterday”, while anything published seven days ago is posted “a week ago”. If an entry is more than a year old, the plugin will display the post date as "X years, Y days".
+This plugin displays the number of years, days, hours and minutes since a post or a page was published. Examples are “Just now” (less than a minute ago), “47 minutes ago” (less than an hour ago), “3 hours ago” (less than a day ago), “Yesterday”, “3 days ago”, “One week ago”, “76 days ago”, “2 years, 13 days ago” and so on. It’s also possible to make the plugin behave like the 1.x version and turn off displaying minutes and hours. The plugin will then fall back to “Today” for everything published less than 24 hours ago and not display minutes and hours. There are options for defining a prepending and appending text and change all the textual output from the plugin, for instance “minutes ago” and “One week ago”, making it easy for you to translate it to any language you want.
 
 == Installation ==
 
@@ -18,29 +18,34 @@ This plugin displays the number of years and days since a post or a page was pub
 2. Unzip the contents of the downloaded file to the /wp-content/plugins/ directory of your Wordpress installation.
 3. Log in to your Wordpress dashboard and activate the wp_days_ago plugin that should now be visible in the list.
 4. You can now insert &lt;? wp_days_ago(); ?&gt; anywhere in [The Loop](http://codex.wordpress.org/The_Loop) in your Wordpress theme.
+5. Optionally, you can use &lt;? wp_days_ago(1); ?&gt; instead to turn off the fine grained option (see changelog below). This will make the plugin behave like the 1.x version.
 
-Plugin URL: [http://www.vegard.net/archives/3530/](http://www.vegard.net/archives/3530/)
+Plugin URL: [http://www.vegard.net/archives/3781/](http://www.vegard.net/archives/3781/)
 
 = Usage =
-`<?php wp_days_ago( $offset, $prepend, $append, $texts); ?>`
+`<?php wp_days_ago( $mode, $prepend, $append, $texts); ?>`
 
 = Parameters =
-$offset
- (int) (deprecated) Not in use, but available to provide backwards compatibility. Note that because of how PHP handles optional parameters (parameters can be skipped from right to left), you have to provide this parameter if you decided to use any of the other parameters available. You can enter any value as its ignored by the plugin.
+$mode
+ (int) (optional) Use any value larger than 0 to turn off displaying minutes and hours and instead fall back to "Today" for everything published less than 24 hours ago. Default value is 1.
 
 $prepend
- (string) (optional) This text will be prepended to the plugin's default output.
+ (string) (optional) This text will be prepended to the plugin's default output. Default value is &quot;&quot; (empty string).
 
 $append
- (string) (optional) This text will be appended to the plugin's default output.
+ (string) (optional) This text will be appended to the plugin's default output. Default value is &quot;&quot; (empty string).
  
 $texts
- (array) (optional) This array allows you to change the texts used by the plugin. This will, for instance, allow you to translate the output to your language. The default values are array("Today", "Yesterday", "One week ago", "days ago", "year", "years", "ago", " day ago", " days ago").
+ (array) (optional) This array allows you to change the texts used by the plugin. This will, for instance, allow you to translate the output to your language. The default value is array("Today", "Yesterday", "One week ago", "days ago", "year", "years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago").
 
 == Upgrade notice ==
 No changes to your theme or configuration are necessary when you upgrade from a previous version.
 
 == Changelog ==
+
+= 2.0 =
+* New feature: The plugin now by default displays minutes and hours since a post or page was created.
+* Change: The $offset parameter from the 1.x version is now replaced with a mode parameter that enables you to prevent the plugin from displaying the minutes and hours since a post or page was published and instead fall back to “today” for everything published lest than 24 hours ago.
 
 = 1.7.1 =
 * Changed some of the default texts so that they start with a capital letter.
