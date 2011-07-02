@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: wp-days-ago
-Version: 2.0
+Version: 2.0.1
 Plugin URI: http://www.vegard.net/archives/3781/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
@@ -44,7 +44,6 @@ function wp_days_ago ($mode = 0, $prepend = "", $append = "",
 			} else if($minutes < 120) {
 				$output .= $texts[12];
 			} else {
-				$output .= $minutes / 60 . " " . $texts[13] . "<br/>";
 				$output .= floor($minutes / 60) . " " . $texts[13];
 			}
 		} else {

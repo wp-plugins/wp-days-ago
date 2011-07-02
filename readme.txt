@@ -43,9 +43,12 @@ No changes to your theme or configuration are necessary when you upgrade from a 
 
 == Changelog ==
 
+= 2.0.1 =
+* Change: Removed some debug code that had made its way into the release.
+
 = 2.0 =
 * New feature: The plugin now by default displays minutes and hours since a post or page was created.
-* Change: The $offset parameter from the 1.x version is now replaced with a mode parameter that enables you to prevent the plugin from displaying the minutes and hours since a post or page was published and instead fall back to “Today” for everything published lest than 24 hours ago.
+* Change: The $offset parameter from the 1.x version is now replaced with a $mode parameter that enables you to prevent the plugin from displaying the minutes and hours since a post or page was published and instead fall back to “Today” for everything published lest than 24 hours ago.
 
 = 1.7.1 =
 * Changed some of the default texts so that they start with a capital letter.
