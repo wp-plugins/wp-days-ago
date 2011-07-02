@@ -27,7 +27,7 @@ Plugin URL: [http://www.vegard.net/archives/3781/](http://www.vegard.net/archive
 
 = Parameters =
 $mode
- (int) (optional) Use any value larger than 0 to turn off displaying minutes and hours and instead fall back to "Today" for everything published less than 24 hours ago. Default value is 1.
+ (int) (optional) Use any value larger than 0 to turn off displaying minutes and hours and instead fall back to "Today" for everything published less than 24 hours ago. Default value is 0.
 
 $prepend
  (string) (optional) This text will be prepended to the plugin's default output. Default value is &quot;&quot; (empty string).
@@ -45,7 +45,7 @@ No changes to your theme or configuration are necessary when you upgrade from a 
 
 = 2.0 =
 * New feature: The plugin now by default displays minutes and hours since a post or page was created.
-* Change: The $offset parameter from the 1.x version is now replaced with a mode parameter that enables you to prevent the plugin from displaying the minutes and hours since a post or page was published and instead fall back to “today” for everything published lest than 24 hours ago.
+* Change: The $offset parameter from the 1.x version is now replaced with a mode parameter that enables you to prevent the plugin from displaying the minutes and hours since a post or page was published and instead fall back to “Today” for everything published lest than 24 hours ago.
 
 = 1.7.1 =
 * Changed some of the default texts so that they start with a capital letter.
