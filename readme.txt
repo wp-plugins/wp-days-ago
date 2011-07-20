@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: vskjefst
-Tags: posts, pages, date, day, days, relative date, days ago
+Tags: posts, pages, date, day, days, hours, minutes, relative date, days ago, hours ago, minutes ago
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=4UXDX43P8V9EN&lc=NO&item_name=wp%2ddays%2dago&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 1.5
-Tested up to: 3.2
+Tested up to: 3.2.1
 Stable tag: trunk
 
 Displays the number of years, days, hours and minutes since a post or a page was published.
@@ -36,12 +36,15 @@ $append
  (string) (optional) This text will be appended to the plugin's default output. Default value is &quot;&quot; (empty string).
  
 $texts
- (array) (optional) This array allows you to change the texts used by the plugin. This will, for instance, allow you to translate the output to your language. The default value is array("Today", "Yesterday", "One week ago", "days ago", "year", "years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago").
+ (array) (optional) This array allows you to change the texts used by the plugin. This will, for instance, allow you to translate the output to your language. The default value is array("Today", "Yesterday", "One week ago", "days ago", "year", "years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago", "Some time in the future").
 
 == Upgrade notice ==
 No changes to your theme or configuration are necessary when you upgrade from a previous version.
 
 == Changelog ==
+
+= 2.0.2 =
+* New feature: Added text "Some time in the future" for scheduled posts (visible in preview mode only).
 
 = 2.0.1 =
 * Change: Removed some debug code that had made its way into the release.
