@@ -3,7 +3,7 @@ Contributors: vskjefst
 Tags: posts, pages, date, day, days, hours, minutes, relative date, days ago, hours ago, minutes ago
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=4UXDX43P8V9EN&lc=NO&item_name=wp%2ddays%2dago&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 1.5
-Tested up to: 3.2.1
+Tested up to: 3.3
 Stable tag: trunk
 
 Displays the number of years, days, hours and minutes since a post or a page was published.
