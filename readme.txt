@@ -1,16 +1,16 @@
 === Plugin Name ===
 Contributors: vskjefst
-Tags: posts, pages, date, day, days, hours, minutes, relative date, days ago, hours ago, minutes ago
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=4UXDX43P8V9EN&lc=NO&item_name=wp%2ddays%2dago&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, days ago, hours ago, minutes ago
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 1.5
-Tested up to: 3.3
+Tested up to: 3.3.1
 Stable tag: trunk
 
-Displays the number of years, days, hours and minutes since a post or a page was published.
+Displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc.
 
 == Description ==
 
-This plugin displays the number of years, days, hours and minutes since a post or a page was published. Examples are “Just now” (less than a minute ago), “47 minutes ago” (less than an hour ago), “3 hours ago” (less than a day ago), “Yesterday”, “3 days ago”, “One week ago”, “76 days ago”, “2 years, 13 days ago” and so on. It’s also possible to make the plugin behave like the 1.x version and turn off displaying minutes and hours. The plugin will then fall back to “Today” for everything published less than 24 hours ago and not display minutes and hours. There are options for defining a prepending and appending text and change all the textual output from the plugin, for instance “minutes ago” and “One week ago”, making it easy for you to translate it to any language you want.
+This plugin displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc. Examples are “Just now” (less than a minute ago), “47 minutes ago” (less than an hour ago), “3 hours ago” (less than a day ago), “Yesterday”, “3 days ago”, “One week ago”, “76 days ago”, “2 years, 13 days ago” and so on. It’s also possible to make the plugin behave like the 1.x version and turn off displaying minutes and hours. The plugin will then fall back to “Today” for everything published less than 24 hours ago and not display minutes and hours. There are options for defining a prepending and appending text and change all the textual output from the plugin, for instance “minutes ago” and “One week ago”, making it easy for you to translate it to any language you want.
 
 == Installation ==
 
