@@ -3,7 +3,7 @@ Contributors: vskjefst
 Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, days ago, hours ago, minutes ago
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 1.5
-Tested up to: 3.4.1
+Tested up to: 3.4.2
 Stable tag: trunk
 
 Displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc.
