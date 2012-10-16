@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: wp-days-ago
-Version: 2.0.2
+Version: 2.5
 Plugin URI: http://www.vegard.net/archives/3781/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
 Description: Displays the number of years and days since a post or page was written. 
 
-Copyright 2008-2011 Vegard Skjefstad vegard@vegard.net
+Copyright 2008-2012 Vegard Skjefstad vegard@vegard.net
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,13 +24,33 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+function wp_days_ago_ajax($mode = 0, $prepend = "", $append = "") {
+		echo "<script type=\"text/javascript\"><!--\n";
+		echo "jQuery(document).ready(function(){";
+		echo "get_wp_days_ago(" . get_the_ID() . ", " . $mode . ", '" . $prepend . "', '" . $append . "');";
+		echo "})\n";
+		echo "--></script>\n";
+		echo "<span class=\"wp_days_ago\" id=\"wp_days_ago-" . get_the_ID() . "\"></span>";
+}
+
+function wp_days_ago_ajax_handler () {
+	die(wp_days_ago_internal($_POST["postId"], $_POST["mode"], $_POST["prepend"], $_POST["append"]));
+}
+
 function wp_days_ago ($mode = 0, $prepend = "", $append = "",
 		$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
 			"years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago", "Some time in the future")) {
+			
+		echo wp_days_ago_internal(get_the_ID(), $mode, $prepend, $append, $texts);
+}
 
-		$days = round((strtotime(date("Y-m-d", gmmktime() + (get_option('gmt_offset') * 3600))) - strtotime(date("Y-m-d", get_the_time("U")))) / 86400);
+function wp_days_ago_internal ($the_id, $mode = 0, $prepend = "", $append = "",
+		$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
+			"years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago", "Some time in the future")) {
 
-		$minutes = round((strtotime(date("Y-m-d H:i", gmmktime() + (get_option('gmt_offset') * 3600))) - strtotime(date("Y-m-d H:i", get_the_time("U")))) / 60);
+		$days = round((strtotime(date("Y-m-d", gmmktime() + (get_option('gmt_offset') * 3600))) - strtotime(date("Y-m-d", get_the_time("U", $the_id)))) / 86400);
+
+		$minutes = round((strtotime(date("Y-m-d H:i", gmmktime() + (get_option('gmt_offset') * 3600))) - strtotime(date("Y-m-d H:i", get_the_time("U", $the_id)))) / 60);
 		
 		$output = $prepend;
 				
@@ -78,8 +98,14 @@ function wp_days_ago ($mode = 0, $prepend = "", $append = "",
 
 		$output = $output . $append;
 		
-		echo $output;
+		return $output;
 }
 
-add_filter('Posts', 'wp_days_ago');
+function wp_days_ago_enqueue_scripts() {
+	wp_enqueue_script( "wp_days_ago", plugin_dir_url( __FILE__ ) . '/wp_days_ago.js', array( 'jquery' ) );
+	wp_localize_script( 'wp_days_ago', 'wp_days_ago_script', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );	
+}
+add_action('wp_enqueue_scripts', 'wp_days_ago_enqueue_scripts');
+add_action('wp_ajax_nopriv_wp_days_ago_ajax', 'wp_days_ago_ajax_handler');
+add_action('wp_ajax_wp_days_ago_ajax', 'wp_days_ago_ajax_handler');
 ?>
