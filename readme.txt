@@ -12,7 +12,7 @@ Displays the number of years, days, hours and minutes since a post or a page was
 
 This plugin displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc. Examples are “Just now” (less than a minute ago), “47 minutes ago” (less than an hour ago), “3 hours ago” (less than a day ago), “Yesterday”, “3 days ago”, “One week ago”, “76 days ago”, “2 years, 13 days ago” and so on. It’s also possible to make the plugin behave like the 1.x version and turn off displaying minutes and hours. The plugin will then fall back to “Today” for everything published less than 24 hours ago and not display minutes and hours. There are options for defining a prepending and appending text and change all the textual output from the plugin, for instance “minutes ago” and “One week ago”, making it easy for you to translate it to any language you want.
 
-Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the use of AJAX. Please see below for details.
+Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the use of AJAX. Please see installation for details.
 
 == Installation ==
 
@@ -20,7 +20,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 2. Unzip the contents of the downloaded file to the /wp-content/plugins/ directory of your Wordpress installation.
 3. Log in to your Wordpress dashboard and activate the wp_days_ago plugin that should now be visible in the list.
 4. You can now insert &lt;? wp_days_ago(); ?&gt; (or &lt;? wp_days_ago_ajax(); ?&gt;) anywhere in [The Loop](http://codex.wordpress.org/The_Loop) in your Wordpress theme.
-5. Optionally, you can use &lt;? wp_days_ago(1); ?&gt; (or &lt;? wp_days_ago_ajax(1); ?&gt;) instead to turn off the fine grained option (see changelog below). This will make the plugin behave like the 1.x version.
+5. Optionally, you can use &lt;? wp_days_ago(1); ?&gt; (or &lt;? wp_days_ago_ajax(1); ?&gt;) instead to turn off the fine grained option (see changelog for details). This will make the plugin behave like the 1.x version.
 
 Plugin URL: [http://www.vegard.net/archives/3781/](http://www.vegard.net/archives/3781/)
 
@@ -67,7 +67,7 @@ No changes to your theme or configuration are necessary when you upgrade from a 
 == Changelog ==
 
 = 2.5 =
-* New feature: Cached sites are now supported through the use of the wp_days_ago_ajax function. See above for details.
+* New feature: Cached sites are now supported through the use of the wp_days_ago_ajax function. See installation for details.
 
 = 2.0.2 =
 * New feature: Added text "Some time in the future" for scheduled posts (visible in preview mode only).
