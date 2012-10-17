@@ -29,6 +29,8 @@ Since version 2.5, wp_days_ago supports cache plugins by making an AJAX call fro
 
 To achieve this, use the wp_days_ago_ajax function instead of wp_days_ago. Please note that the wp_days_ago_ajax function does not support the $texts parameter. Other than that, it behaves the same way as the wp_days_ago method. Please see below for details.
 
+If you decide to use the wp_days_ago_ajax function, you should be aware of this: The way WordPress handles AJAX functions is less than efficient and if you have a lot of views on your site you will experience a higher load on the system. In future versions of the plugin I plan to write a stand alone AJAX handler that doesn't use the WordPress core for AJAX. It's not the recommended way, but currently the recommended way is not good enough for request-intensive plugins like this one.
+
 = Usage non-cached sites =
 `<?php wp_days_ago( $mode, $prepend, $append, $texts); ?>`
 
