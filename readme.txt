@@ -49,7 +49,7 @@ $texts
 
 = Usage for cached sites =
  
-`<?php wp_days_ago_ajax( $mode, $prepend, $append); ?>`
+`<?php wp_days_ago_ajax( $mode, $prepend, $append, $threshold); ?>`
 
 = Parameters =
 $mode
