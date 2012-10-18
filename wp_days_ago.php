@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: wp-days-ago
-Version: 2.5
+Version: 2.5.1
 Plugin URI: http://www.vegard.net/archives/3781/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
@@ -24,81 +24,87 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-function wp_days_ago_ajax($mode = 0, $prepend = "", $append = "") {
+function wp_days_ago_ajax($mode = 0, $prepend = "", $append = "", $threshold = 86400) {
+	
+	$post_id = get_the_ID();
+	$the_time = get_the_time("U", $post_id);
+	if(gmmktime() + (get_option('gmt_offset') * 3600) - $the_time > $threshold) {
+		echo wp_days_ago_internal($the_time, $mode, $prepend, $append);
+	} else {
 		echo "<script type=\"text/javascript\"><!--\n";
 		echo "jQuery(document).ready(function(){";
-		echo "get_wp_days_ago(" . get_the_ID() . ", " . $mode . ", '" . $prepend . "', '" . $append . "');";
+		echo "get_wp_days_ago(" . $post_id . ", " . $mode . ", '" . $prepend . "', '" . $append . "');";
 		echo "})\n";
 		echo "--></script>\n";
-		echo "<span class=\"wp_days_ago\" id=\"wp_days_ago-" . get_the_ID() . "\"></span>";
+		echo "<span class=\"wp_days_ago\" id=\"wp_days_ago-" . $post_id . "\"></span>";
+	}
 }
 
 function wp_days_ago_ajax_handler () {
-	die(wp_days_ago_internal($_POST["postId"], $_POST["mode"], $_POST["prepend"], $_POST["append"]));
+	die(wp_days_ago_internal(get_the_time("U", $_POST["postId"]), $_POST["mode"], $_POST["prepend"], $_POST["append"]));
 }
 
 function wp_days_ago ($mode = 0, $prepend = "", $append = "",
-		$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
-			"years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago", "Some time in the future")) {
-			
-		echo wp_days_ago_internal(get_the_ID(), $mode, $prepend, $append, $texts);
+	$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
+		"years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago", "Some time in the future")) {
+		
+	echo wp_days_ago_internal(get_the_ID(), $mode, $prepend, $append, $texts);
 }
 
-function wp_days_ago_internal ($the_id, $mode = 0, $prepend = "", $append = "",
-		$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
+function wp_days_ago_internal ($the_time, $mode = 0, $prepend = "", $append = "",
+	$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
 			"years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago", "Some time in the future")) {
 
-		$days = round((strtotime(date("Y-m-d", gmmktime() + (get_option('gmt_offset') * 3600))) - strtotime(date("Y-m-d", get_the_time("U", $the_id)))) / 86400);
+	$gmt_offset = get_option('gmt_offset');
 
-		$minutes = round((strtotime(date("Y-m-d H:i", gmmktime() + (get_option('gmt_offset') * 3600))) - strtotime(date("Y-m-d H:i", get_the_time("U", $the_id)))) / 60);
-		
-		$output = $prepend;
-				
-		if($minutes < 0) {
-			$output .= $texts[14];
-		} else if($mode == 0 && $minutes < 1440) {
-			if($minutes == 0) {
-				$output .= $texts[9];
-			} else if($minutes == 1) {
-				$output .= $texts[10];
-			} else if($minutes < 60) {
-				$output .= $minutes . " " . $texts[11];
-			} else if($minutes < 120) {
-				$output .= $texts[12];
-			} else {
-				$output .= floor($minutes / 60) . " " . $texts[13];
-			}
+	$days = round((gmmktime() + ($gmt_offset * 3600) - $the_time) / 86400);
+	$minutes = round((gmmktime() + ($gmt_offset * 3600) - $the_time) / 60);
+	
+	$output = $prepend;
+			
+	if($minutes < 0) {
+		$output .= $texts[14];
+	} else if($mode == 0 && $minutes < 1440) {
+		if($minutes == 0) {
+			$output .= $texts[9];
+		} else if($minutes == 1) {
+			$output .= $texts[10];
+		} else if($minutes < 60) {
+			$output .= $minutes . " " . $texts[11];
+		} else if($minutes < 120) {
+			$output .= $texts[12];
 		} else {
-			if($days == 0)
-				$output = $output . $texts[0];
-			elseif($days == 1)
-				$output = $output . $texts[1];
-			elseif($days == 7)
-				$output = $output . $texts[2];
-			else {
-				$years = floor($days / 365);
-				if($years > 0) {
-					if($years == 1)
-						$yearappend = $texts[4];
-					else
-						$yearappend = $texts[5];
+			$output .= floor($minutes / 60) . " " . $texts[13];
+		}
+	} else {
+		if($days == 0)
+			$output = $output . $texts[0];
+		elseif($days == 1)
+			$output = $output . $texts[1];
+		elseif($days == 7)
+			$output = $output . $texts[2];
+		else {
+			$years = floor($days / 365);
+			if($years > 0) {
+				if($years == 1)
+					$yearappend = $texts[4];
+				else
+					$yearappend = $texts[5];
 
-					$days = $days - (365 * $years);
-					if($days == 0)
-						$output = $output . $years . " " . $yearappend . " " . $texts[6];
-					else if($days == 1)
-						$output = $output . $years . " " . $yearappend . ", " . $days . " " . $texts[7];
-					else
-						$output = $output . $years . " " . $yearappend . ", " . $days . " " . $texts[8];
-				} else {
-					$output = $output . $days . " " . $texts[3];
-				}
+				$days = $days - (365 * $years);
+				if($days == 0)
+					$output = $output . $years . " " . $yearappend . " " . $texts[6];
+				else if($days == 1)
+					$output = $output . $years . " " . $yearappend . ", " . $days . " " . $texts[7];
+				else
+					$output = $output . $years . " " . $yearappend . ", " . $days . " " . $texts[8];
+			} else {
+				$output = $output . $days . " " . $texts[3];
 			}
 		}
+	}
 
-		$output = $output . $append;
-		
-		return $output;
+	return $output . $append;
 }
 
 function wp_days_ago_enqueue_scripts() {

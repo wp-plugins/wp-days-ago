@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== wp-days-ago ===
 Contributors: vskjefst
 Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, days ago, hours ago, minutes ago
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
@@ -25,11 +25,11 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 Plugin URL: [http://www.vegard.net/archives/3781/](http://www.vegard.net/archives/3781/)
 
 = Support for cache plugins =
-Since version 2.5, wp_days_ago supports cache plugins by making an AJAX call from the client to correctly display the time since a post or page was published.
+Since version 2.5, wp-days-ago supports cache plugins by making an AJAX call from the client to correctly display the time since a post or page was published.
 
 To achieve this, use the wp_days_ago_ajax function instead of wp_days_ago. Please note that the wp_days_ago_ajax function does not support the $texts parameter. Other than that, it behaves the same way as the wp_days_ago method. Please see below for details.
 
-If you decide to use the wp_days_ago_ajax function, you should be aware of this: The way WordPress handles AJAX functions is less than efficient and if you have a lot of views on your site you will experience a higher load on the system. In future versions of the plugin I plan to write a stand alone AJAX handler that doesn't use the WordPress core for AJAX. It's not the recommended way, but currently the recommended way is not good enough for request-intensive plugins like this one.
+If you decide to use the wp_days_ago_ajax function, you should be aware of this: The way WordPress handles AJAX functions is less than efficient and if you have a lot of views on your site you will experience a higher load on the system. Please see the usage documentation for the wp_days_ago_ajax method for details.
 
 = Usage non-cached sites =
 `<?php wp_days_ago( $mode, $prepend, $append, $texts); ?>`
@@ -61,12 +61,19 @@ $prepend
 $append
  (string) (optional) This text will be appended to the plugin's default output. Default value is &quot;&quot; (empty string).
 
+$threshold
+ (int) (optional) The number of seconds since a post or page was published before the AJAX method should revert to serving date information without using AJAX (in the same way as the wp_days_ago method). The default value is 86400 (one day). The value should match the configured invalidation threshold of your cache plugin.
+ 
 The output from wp_days_ago_ajax will be enclosed in a span-element that uses the class "wp_days_ago".
  
 == Upgrade notice ==
 No changes to your theme or configuration are necessary when you upgrade from a previous version.
 
 == Changelog ==
+
+= 2.5.1 =
+* New feature: Added a threshold parameter to control when AJAX should be used and when the plugin should automatically fall back to the old way of displaying information. After a day, the plugin doesn't display any detailed information anyway so there is no need to strain the server with a lot of AJAX calls. The information displayed by wp-days-ago will of course be updated when your cache plugin invalidates the content and rebuilds it. The value of the wp_days_ago_ajax method threshold paramterer should match the configured invalidation threshold of your cache plugin.
+* Change: Optimized date calculation and database access code.
 
 = 2.5 =
 * New feature: Cached sites are now supported through the use of the wp_days_ago_ajax function. See above for details.
