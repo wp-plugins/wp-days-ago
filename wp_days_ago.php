@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: wp-days-ago
-Version: 2.5.1
+Version: 2.5.2
 Plugin URI: http://www.vegard.net/archives/3781/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
@@ -48,7 +48,7 @@ function wp_days_ago ($mode = 0, $prepend = "", $append = "",
 	$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
 		"years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago", "Some time in the future")) {
 		
-	echo wp_days_ago_internal(get_the_ID(), $mode, $prepend, $append, $texts);
+	echo wp_days_ago_internal(get_the_time("U", get_the_ID()), $mode, $prepend, $append, $texts);
 }
 
 function wp_days_ago_internal ($the_time, $mode = 0, $prepend = "", $append = "",
