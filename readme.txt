@@ -71,6 +71,9 @@ No changes to your theme or configuration are necessary when you upgrade from a 
 
 == Changelog ==
 
+= 2.5.2 =
+* Bugfix: Fixed a major bug that happened when using the wp_days_ago method. Thanks to user heinnge for reporting this.
+
 = 2.5.1 =
 * New feature: Added a threshold parameter to control when AJAX should be used and when the plugin should automatically fall back to the old way of displaying information. After a day, the plugin doesn't display any detailed information anyway so there is no need to strain the server with a lot of AJAX calls. The information displayed by wp-days-ago will of course be updated when your cache plugin invalidates the content and rebuilds it. The value of the wp_days_ago_ajax method threshold paramterer should match the configured invalidation threshold of your cache plugin.
 * Change: Optimized date calculation and database access code.
