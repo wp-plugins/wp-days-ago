@@ -1,4 +1,4 @@
-function get_wp_days_ago (postId, mode, prepend, append) {
+function get_wp_days_ago (postId, mode, prepend, append, showDateAfter, showDateFormat) {
 	jQuery.ajax({
         type: 'POST',
         url: wp_days_ago_script.ajaxurl,
@@ -7,7 +7,9 @@ function get_wp_days_ago (postId, mode, prepend, append) {
             postId: postId,
 			mode: mode,
 			prepend: prepend,
-			append: append
+			append: append,
+			showDateAfter: showDateAfter,
+			showDateFormat: showDateFormat
         },
         success: function(data, textStatus, XMLHttpRequest) {
 			jQuery("#wp_days_ago-" + postId).html(data);
