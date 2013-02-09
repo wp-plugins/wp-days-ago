@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: wp-days-ago
-Version: 2.6
+Version: 2.6.1
 Plugin URI: http://wordpress.org/extend/plugins/wp-days-ago/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
@@ -55,14 +55,14 @@ function wp_days_ago ($mode = 0, $prepend = "", $append = "", $texts = null, $sh
 
 function wp_days_ago_internal ($the_time, $postId, $mode = 0, $prepend = "", $append = "", $texts = null, 
 		$showDateAfter = -1, $showDateFormat = null) {
-
+		
 	if($texts == null) {
 		$texts = array("Today", "Yesterday", "One week ago", "days ago", "year",
 		"years", "ago", "day ago", "days ago", "Just now", "One minute ago", "minutes ago", "1 hour ago", "hours ago", "Some time in the future");
 	}
 			
 	$gmt_offset = get_option('gmt_offset');
-	
+
 	$output = $prepend;
 
 	if($showDateAfter > 0 && (gmmktime() + ($gmt_offset * 3600) - $the_time > $showDateAfter)) {
@@ -71,7 +71,6 @@ function wp_days_ago_internal ($the_time, $postId, $mode = 0, $prepend = "", $ap
 		}
 		$output .= get_the_time($showDateFormat, $postId);
 	} else {
-		$days = round((gmmktime() + ($gmt_offset * 3600) - $the_time) / 86400);
 		$minutes = round((gmmktime() + ($gmt_offset * 3600) - $the_time) / 60);
 	
 		if($minutes < 0) {
@@ -89,27 +88,42 @@ function wp_days_ago_internal ($the_time, $postId, $mode = 0, $prepend = "", $ap
 				$output .= floor($minutes / 60) . " " . $texts[13];
 			}
 		} else {
+			$now = strtotime(date("Y-m-d", (gmmktime() + ($gmt_offset * 3600))));
+			$published = strtotime(date("Y-m-d", $the_time));
+			$days = floor(($now - $published) / 86400);
+			
 			if($days == 0)
 				$output = $output . $texts[0];
-			elseif($days == 1)
+			else if($days == 1)
 				$output = $output . $texts[1];
-			elseif($days == 7)
+			else if($days == 7)
 				$output = $output . $texts[2];
 			else {
-				$years = floor($days / 365);
-				if($years > 0) {
-					if($years == 1)
+				$startYear = date("Y", $published);
+				$endYear = date("Y", $now);
+				$completeYears = 0;
+				$daysLeft = $days;
+				for($i = $startYear; $i < $endYear; $i++) {
+					$numberOfDays = date("z", mktime(0,0,0,12,31,$i)) + 1;
+					if($daysLeft - $numberOfDays >= 0) {
+						$daysLeft -= $numberOfDays;
+						$completeYears++;
+					}
+				}
+				
+				if($completeYears > 0) {
+					if($completeYears == 1)
 						$yearappend = $texts[4];
-					else
+					else 
 						$yearappend = $texts[5];
-
-					$days = $days - (365 * $years);
+						
+					$days = $daysLeft;
 					if($days == 0)
-						$output = $output . $years . " " . $yearappend . " " . $texts[6];
+						$output = $output . $completeYears . " " . $yearappend . " " . $texts[6];
 					else if($days == 1)
-						$output = $output . $years . " " . $yearappend . ", " . $days . " " . $texts[7];
+						$output = $output . $completeYears . " " . $yearappend . ", " . $days . " " . $texts[7];
 					else
-						$output = $output . $years . " " . $yearappend . ", " . $days . " " . $texts[8];
+						$output = $output . $completeYears . " " . $yearappend . ", " . $days . " " . $texts[8];
 				} else {
 					$output = $output . $days . " " . $texts[3];
 				}

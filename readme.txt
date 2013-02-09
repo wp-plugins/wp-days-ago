@@ -83,6 +83,12 @@ No changes to your theme or configuration are necessary when you upgrade from a 
 
 == Changelog ==
 
+= 2.6.1 =
+* Change: When calculating days, the plugin will now ignore the publishing time and only use the actual date.
+* Change: When calculating years, the plugin will now take into account leap years.
+
+Both changes should lead to a more accurate output from the plugin.
+
 = 2.6 =
 * New feature: Support for falling back to showing the date and time a post or page is published instead of "X days ago" and similar a configured number of seconds after the post or page is published. The feature is turned off by default, so if you are upgrading from a previous version of wp-days-ago, there is no need for you to change anything unless you want to use this new feature.
 
