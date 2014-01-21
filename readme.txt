@@ -1,6 +1,6 @@
 === wp-days-ago ===
 Contributors: vskjefst
-Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, days ago, hours ago, minutes ago
+Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 2.1
 Tested up to: 3.8
@@ -10,9 +10,9 @@ Displays the number of years, days, hours and minutes since a post or a page was
 
 == Description ==
 
-This plugin displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc. Examples are "Just now" (less than a minute ago), "47 minutes ago" (less than an hour ago), "3 hours ago" (less than a day ago), "Yesterday", "3 days ago", "One week ago", "3 months ago", "3 months, 4 days ago", "2 years, 13 days ago" and so on. It's also possible to configure wp-days-ago to fall back to displaying the actual date and time when a post or page was published when a certain number of seconds after publishing time has been reached.
+This plugin displays the number of years, months, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc. Examples are "Just now" (less than a minute ago), "47 minutes ago" (less than an hour ago), "3 hours ago" (less than a day ago), "Yesterday", "3 days ago", "One week ago", "3 months ago", "3 months, 4 days ago", "2 years, 13 days ago" and so on. It's also possible to configure wp-days-ago to fall back to displaying the actual date and time when a post or page was published when a certain number of seconds after publishing time has been reached.
 
-Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the use of AJAX. This means that the plugin will show corret information even if the page is cached. Please see the installation instructions, and the stopUsingAjaxAfter parameter in particular, for details.
+Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the use of AJAX. This means that the plugin will show correct information even if the page is cached. Please see the installation instructions, and the stopUsingAjaxAfter parameter in particular, for details.
 
 = Translations =
 * English
