@@ -3,7 +3,7 @@ Contributors: vskjefst
 Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 2.1
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 
 Displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc.
@@ -14,9 +14,13 @@ This plugin displays the number of years, months, days, hours and minutes since 
 
 Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the use of AJAX. This means that the plugin will show correct information even if the page is cached. Please see the installation instructions, and the stopUsingAjaxAfter parameter in particular, for details.
 
-= Translations =
+= Available translations =
 * English
-* Norwegian (Bokmål)
+* Norwegian (bokmål)
+* Norwegian (nynorsk)
+* Spanish
+* Swedish
+* Turkish
 
 == Installation ==
 
@@ -40,7 +44,7 @@ $showDateFormat
 
 = Information for translators =
  
-There's a POT file in the languages folder if you want to translate the plugin into another language. If you do that, I'd really appreciate it if you could provide me with the MO file so it can be included in future versions of the plugin. You will of course be credited for your work. 
+There's a POT file in the languages folder if you want to translate the plugin into another language. If you do that, I'd really appreciate it if you could provide me with the PO/POT and MO file so it can be included in future versions of the plugin. You will of course be credited for your work. 
 
 In the POT file, there's a string called "prepender". This is for languages that need to prepend a word before the number in the string. An example is Norwegian, which will prepend the word "for" before the number: "For 2 dager siden". "For" is the prepender. Some languages doesn't use the prepender, English being a natural example. The Norwegian example is "2 days ago" in English. If your language doesn't need to use a prepender, simply leave the string untranslated.
  
@@ -48,6 +52,9 @@ In the POT file, there's a string called "prepender". This is for languages that
 Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgade from version 2 or an even earlier version.
 
 == Changelog ==
+
+= 3.0.1 =
+* Added Spanish, Turkish, Swedish and Norwegian (nynorsk) translations.
 
 = 3.0.0 =
 * Bugfix: Fixed some edge case bugs.
