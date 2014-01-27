@@ -18,7 +18,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 * English
 * Norwegian (bokmål)
 * Norwegian (nynorsk)
-* Spanish (thanks to Andrew Kurtis, http://www.webhostinghub.com/)
+* Spanish (thanks to Andrew Kurtis, [WebHostingHub](http://www.webhostinghub.com/))
 * Swedish
 * Turkish
 
