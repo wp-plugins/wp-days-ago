@@ -21,6 +21,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 * Spanish (thanks to Andrew Kurtis, [WebHostingHub](http://www.webhostinghub.com/))
 * Swedish
 * Turkish
+* Russian (thanks to Yuri from [www.coinside.ru](http://www.coinside.ru/))
 
 == Installation ==
 
@@ -53,8 +54,11 @@ Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x ar
 
 == Changelog ==
 
+= 3.0.2 =
+* Added Russian translation (thanks to Yuri from [www.coinside.ru](http://www.coinside.ru/)).
+
 = 3.0.1 =
-* Added Spanish, Turkish, Swedish and Norwegian (nynorsk) translations.
+* Added Spanish (thanks to Andrew Kurtis, [WebHostingHub](http://www.webhostinghub.com/)), Turkish, Swedish and Norwegian (nynorsk) translations.
 
 = 3.0.0 =
 * Bugfix: Fixed some edge case bugs.

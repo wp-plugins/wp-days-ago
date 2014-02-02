@@ -4,7 +4,7 @@ include("wp_days_ago-core-old.php");
 
 /*
 Plugin Name: wp-days-ago
-Version: 3.0.1
+Version: 3.0.2
 Plugin URI: http://wordpress.org/extend/plugins/wp-days-ago/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
