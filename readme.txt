@@ -15,13 +15,14 @@ This plugin displays the number of years, months, days, hours and minutes since 
 Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the use of AJAX. This means that the plugin will show correct information even if the page is cached. Please see the installation instructions, and the stopUsingAjaxAfter parameter in particular, for details.
 
 = Available translations =
+* Dutch (thanks to Marjolein Boer, [Pixelein](http://www.pixelein.nl/))
 * English
 * Norwegian (bokmål)
 * Norwegian (nynorsk)
+* Russian (thanks to Yuri from [www.coinside.ru](http://www.coinside.ru/))
 * Spanish (thanks to Andrew Kurtis, [WebHostingHub](http://www.webhostinghub.com/))
 * Swedish
 * Turkish
-* Russian (thanks to Yuri from [www.coinside.ru](http://www.coinside.ru/))
 
 == Installation ==
 
@@ -53,6 +54,9 @@ In the POT file, there's a string called "prepender". This is for languages that
 Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgade from version 2 or an even earlier version.
 
 == Changelog ==
+
+= 3.0.3 =
+* Added Dutch translation (thanks to Marjolein Boer, [Pixelein](http://www.pixelein.nl/)).
 
 = 3.0.2 =
 * Added Russian translation (thanks to Yuri from [www.coinside.ru](http://www.coinside.ru/)).
