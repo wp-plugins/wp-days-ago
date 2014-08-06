@@ -1,6 +1,6 @@
 === wp-days-ago ===
 Contributors: vskjefst
-Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago
+Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago, english, bengali, dutch, english, french, norwegian, norsk, bokmål, nynorsk, russian, spanish, swedish, turkish
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 2.1
 Tested up to: 3.9.2
@@ -16,7 +16,6 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 
 = Available translations =
 * Bengali (thanks to Mahmud, C.E.O, S. M. Foundation)
-* Catalan
 * Dutch (thanks to Marjolein Boer, [Pixelein](http://www.pixelein.nl/))
 * English
 * French (thanks to Alondi Commanda, [Alondi Consulting](http://www.alondiconsulting.com/))
@@ -58,9 +57,12 @@ Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x ar
 
 == Changelog ==
 
+= 3.0.4.1 =
+* Bugfix: Added missing language files.
+
 = 3.0.4 =
 * Added Bengali translation (thanks to Mahmud, C.E.O, S. M. Foundation).
-* Added Catalan translation.
+* Added French translation (thanks to Alondi Commanda, [Alondi Consulting](http://www.alondiconsulting.com/))
 
 = 3.0.3 =
 * Added Dutch translation (thanks to Marjolein Boer, [Pixelein](http://www.pixelein.nl/)).
