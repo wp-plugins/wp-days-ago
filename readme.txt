@@ -57,6 +57,9 @@ Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x ar
 
 == Changelog ==
 
+= 3.0.4.2 =
+* Change: Updated Dutch translation.
+
 = 3.0.4.1 =
 * Bugfix: Added missing language files.
 
