@@ -1,9 +1,9 @@
 === wp-days-ago ===
 Contributors: vskjefst
-Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago, english, bengali, dutch, english, french, norwegian, norsk, bokmål, nynorsk, russian, spanish, swedish, turkish
+Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago, english, bengali, dutch, english, french, norwegian, norsk, bokmål, nynorsk, russian, spanish, swedish, turkish, persian, farsi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 2.1
-Tested up to: 4.0
+Tested up to: 4.1.1
 Stable tag: trunk
 
 Displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc.
@@ -21,6 +21,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 * French (thanks to Alondi Commanda, [Alondi Consulting](http://www.alondiconsulting.com/))
 * Norwegian (bokmål)
 * Norwegian (nynorsk)
+* Persian (Farsi) (thanks to WordPress.org user famarini)
 * Russian (thanks to Yuri from [www.coinside.ru](http://www.coinside.ru/))
 * Spanish (thanks to Andrew Kurtis, [WebHostingHub](http://www.webhostinghub.com/))
 * Swedish
@@ -56,6 +57,9 @@ In the POT file, there's a string called "prepender". This is for languages that
 Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgade from version 2 or an even earlier version.
 
 == Changelog ==
+
+= 3.0.4.3 =
+* Change: Added Persian (Farsi) translation (thanks to WordPress.org user famarini).
 
 = 3.0.4.2 =
 * Change: Updated Dutch translation.
