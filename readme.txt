@@ -3,7 +3,7 @@ Contributors: vskjefst
 Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago, english, bengali, dutch, english, french, norwegian, norsk, bokmål, nynorsk, russian, spanish, swedish, turkish, persian, farsi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 2.1
-Tested up to: 4.2
+Tested up to: 4.2.2
 Stable tag: trunk
 
 Displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc.
@@ -36,7 +36,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 
 = Usage =
 
-&lt;?php wp_days_ago_v3 ($stopUsingAjaxAfter, $showDateAfter, $showDateFormat) ?&gt;
+&lt;?php wp_days_ago_v3 ($stopUsingAjaxAfter, $showDateAfter, $showDateFormat, $showYesterday) ?&gt;
 
 $stopUsingAjaxAfter
  (int) (optional) The number of seconds since a post or page was published before the plugin should stop using AJAX to display information. The default value is 0, which means the feature is turned off and AJAX is never used. If you have a cached site and the cache update interval is a day or less, 86400 (one day) is a good value for the plugin. The reason for this is that one day after a post or page was published, the plugin will start to show information in daily intervals ("yesterday", "2 days ago", "3 days ago", etc). If the post or page was published less than a day ago, the plugin will update in smaller intervals ("10 minutes ago", "3 hours ago", "4 hours ago", etc) and AJAX is needed to ensure that this is displayed correctly on a cached site. The minimum value should be the cache update interval.
@@ -46,6 +46,9 @@ $showDateAfter
  
 $showDateFormat
  (string) (optional) The format the plugin should use to display the date and time a post or page was published if the number of seconds configured in the showDateAfter parameter has been reached. The default behaviour is to use the date and time formats configured in Wordpress, but if this parameter is set, the date and time format it defines will be used instead of the format you have configured in WordPress. See [Formatting Date and Time](http://codex.wordpress.org/Formatting_Date_and_Time) for other time and date formats if you want to override the configured formats.
+ 
+$showYesterday
+ (boolean) (optional) Option to show the text "yesterday" if there is less than 24 hours since the post or page was published. Otherwise, the number of hours since the post or page was published will be showed until more than 24 hours have passed. Then, the number of days, etc, will be shown. The default value is true.
 
 = Information for translators =
  
@@ -54,12 +57,16 @@ There's a POT file in the languages folder if you want to translate the plugin i
 In the POT file, there's a string called "prepender". This is for languages that need to prepend a word before the number in the string. An example is Norwegian, which will prepend the word "for" before the number: "For 2 dager siden". "For" is the prepender. Some languages doesn't use the prepender, English being a natural example. The Norwegian example is "2 days ago" in English. If your language doesn't need to use a prepender, simply leave the string untranslated.
  
 == Upgrade notice ==
-Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgade from version 2 or an even earlier version.
+Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed and no new features will be added. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgrade from version 2 or an even earlier version.
 
 == Changelog ==
 
+= 3.1 =
+* Bugfix: Remove hard coded "cet" string that was showed when waiting for AJAX call to finish.
+* New feature: Option to show number of hours instead of "yesterday" before 24 has passed. "Yesterday" don't always make sense if you're having an international audience. The default value is to show "yesterday", so there is no need to change anything unless you want to use the new option. See the installation instructions for details. 
+
 = 3.0.4.3 =
-* Change: Added Persian (Farsi) translation (thanks to WordPress.org user famarini).
+* Added Persian (Farsi) translation (thanks to WordPress.org user famarini).
 
 = 3.0.4.2 =
 * Change: Updated Dutch translation.

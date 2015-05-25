@@ -1,17 +1,17 @@
 <?php
 
-function wp_days_ago_v3 ($stopUsingAjaxAfter = 0, $showDateAfter = -1, $showDateFormat = null) {
+function wp_days_ago_v3 ($stopUsingAjaxAfter = 0, $showDateAfter = -1, $showDateFormat = null, $showYesterday = true) {
 	$post_id = get_the_ID();
 	$the_time = get_post_time("U", true, $post_id);
 	if(gmmktime() - $the_time > $stopUsingAjaxAfter) {
-		echo wp_days_ago_internal_v3($the_time, $post_id, $showDateAfter, $showDateFormat);
+		echo wp_days_ago_internal_v3($the_time, $post_id, $showDateAfter, $showDateFormat, $showYesterday);
 	} else {
 		echo "<script type=\"text/javascript\"><!--\n";
 		echo "jQuery(document).ready(function(){";
-		echo "get_wp_days_ago_v3(" . $post_id . ", '" . $showDateAfter . "', '" . $showDateFormat . "');";
+		echo "get_wp_days_ago_v3(" . $post_id . ", '" . $showDateAfter . "', '" . $showDateFormat . "', '" . $showYesterday . "');";
 		echo "})\n";
 		echo "--></script>\n";
-		echo "<span class=\"wp_days_ago\" id=\"wp_days_ago-" . $post_id . "\">" . get_post_time("H:i", false, $post_id) . " cet</span>";
+		echo "<span class=\"wp_days_ago\" id=\"wp_days_ago-" . $post_id . "\">" . get_post_time("H:i", false, $post_id) . "</span>";
 	}
 }
 
@@ -20,10 +20,16 @@ function wp_days_ago_ajax_handler_v3 () {
 	if($showDateFormat == 'null' || $showDateFormat == '') {
 		$showDateFormat = null;
 	}
-	die(wp_days_ago_internal_v3(get_post_time("U", true, $_POST["postId"]), $_POST["postId"], $_POST["showDateAfter"], $showDateFormat));
+	$showYesterday = $_POST["showYesterday"];
+	if($showYesterday == '') {
+		$showYesterday = false;
+	} else {
+		$showYesterday = true;
+	}
+	die(wp_days_ago_internal_v3(get_post_time("U", true, $_POST["postId"]), $_POST["postId"], $_POST["showDateAfter"], $showDateFormat, $showYesterday));
 }
 
-function wp_days_ago_internal_v3 ($the_time, $postId, $showDateAfter = -1, $showDateFormat = null) {
+function wp_days_ago_internal_v3 ($the_time, $postId, $showDateAfter = -1, $showDateFormat = null, $showYesterday = true) {
 		
 	$gmt_offset = get_option("gmt_offset");
 	$gmmktime = gmmktime();
@@ -40,17 +46,28 @@ function wp_days_ago_internal_v3 ($the_time, $postId, $showDateAfter = -1, $show
 		}
 		$output .= get_the_time($showDateFormat, $postId);
 	} else {
-		$output .= timespanToString(calculateTimespan($the_time, $gmmktime));
+		$output .= timespanToString(calculateTimespan($the_time, $gmmktime, $showYesterday), $showYesterday);
 	}
 
 	return $output;
 }
 
-function timespanToString($t) {
+function timespanToString($t, $showYesterday = true) {
 
 	$foundSomething = $foundYear = $foundMonth = $singular = false;
 	$s = "";
-
+	//print_r($t);
+	
+	// Future
+	/*if ($t[0] < 0) {
+		$foundSomething = true;
+		$singular = true;
+		$foundYear = true;
+		$foundMonth = true;
+		$t[1] = 0;
+		$s .= " " . __("Some time in the future", "wp-days-ago"); // FUTURE
+	}*/
+	
 	// Year.
 	if($t[0] >= 1) {
 		$foundSomething = true;
@@ -84,13 +101,15 @@ function timespanToString($t) {
 		if(strlen($s) > 0) {
 			$s .= ", ";
 		}
-		if($t[2] == 1) {
+		if($t[2] == 1 && $showYesterday) {
 			if($foundYear || $foundMonth) {
 				$s .= $t[2] . " " . __("day", "wp-days-ago"); // DAY
 			} else {
 				$s .= " " . __("Yesterday", "wp-days-ago"); // YESTERDAY
 				$singular = true;
 			}
+		} else if($t[2] == 1 && !$showYesterday) {
+			$s .= $t[2] . " " . __("day", "wp-days-ago"); // DAY
 		} else if($t[2] == 7 && !$foundYear && !$foundMonth) {
 			$s .= " " . __("One week", "wp-days-ago"); // ONE WEEK
 		} else {
@@ -138,12 +157,12 @@ function timespanToString($t) {
 		$prepender = "";
 	}
 	
-	return ($singular ? "" : " " . $prepender) . " " . $s . ($singular ? "" : " " . __("ago", "wp-days-ago")); // AGO
+	return trim(($singular ? "" : " " . $prepender) . " " . $s . ($singular ? "" : " " . __("ago", "wp-days-ago"))); // AGO
 }
 
-function calculateTimespan($older, $newer) { 
+function calculateTimespan($older, $newer, $showYesterday = true) { 
 
-	if(($newer - $older > 86400) || (date("j", $newer) != date("j", $older) && $newer - $older < 86400)) {
+	if($showYesterday && (($newer - $older > 86400) || (date("j", $newer) != date("j", $older) && $newer - $older < 86400))) {
 		$newer = mktime(0, 0, 0, date("n", $newer), date("j", $newer), date("Y", $newer));
 		$older = mktime(0, 0, 0, date("n", $older), date("j", $older), date("Y", $older));
 	}
