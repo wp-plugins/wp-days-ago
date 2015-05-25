@@ -13,31 +13,51 @@ $older = mktime(11, 59, 59, 1, 1, 2015);
 $showYesterday = true;
 test($older, $newer, $showYesterday, "Just now");
 
+$older = mktime(11, 59, 59, 1, 1, 2015);
+$showYesterday = false;
+test($older, $newer, $showYesterday, "Just now");
+
 $older = mktime(11, 59, 0, 1, 1, 2015);
 $showYesterday = true;
+test($older, $newer, $showYesterday, "1 minute ago");
+
+$older = mktime(11, 59, 0, 1, 1, 2015);
+$showYesterday = false;
 test($older, $newer, $showYesterday, "1 minute ago");
 
 $older = mktime(11, 1, 0, 1, 1, 2015);
 $showYesterday = true;
 test($older, $newer, $showYesterday, "59 minutes ago");
 
+$older = mktime(11, 1, 0, 1, 1, 2015);
+$showYesterday = false;
+test($older, $newer, $showYesterday, "59 minutes ago");
+
 $older = mktime(11, 0, 0, 1, 1, 2015);
 $showYesterday = true;
+test($older, $newer, $showYesterday, "1 hour ago");
+
+$older = mktime(11, 0, 0, 1, 1, 2015);
+$showYesterday = false;
 test($older, $newer, $showYesterday, "1 hour ago");
 
 $older = mktime(0, 0, 0, 1, 1, 2015);
 $showYesterday = true;
 test($older, $newer, $showYesterday, "12 hours ago");
 
+$older = mktime(0, 0, 0, 1, 1, 2015);
+$showYesterday = false;
+test($older, $newer, $showYesterday, "12 hours ago");
+
 $older = mktime(23, 59, 59, 12, 31, 2014);
 $showYesterday = true;
 test($older, $newer, $showYesterday, "Yesterday");
 
-$older = mktime(22, 29, 59, 12, 31, 2014);
+$older = mktime(22, 59, 59, 12, 31, 2014);
 $showYesterday = false;
 test($older, $newer, $showYesterday, "13 hours ago");
 
-$older = mktime(12, 1, 0, 12, 31, 2014);
+$older = mktime(13, 0, 0, 12, 31, 2014);
 $showYesterday = false;
 test($older, $newer, $showYesterday, "23 hours ago");
 
@@ -45,9 +65,25 @@ $older = mktime(12, 0, 0, 12, 31, 2014);
 $showYesterday = false;
 test($older, $newer, $showYesterday, "1 day ago");
 
+$older = mktime(11, 0, 0, 12, 30, 2014);
+$showYesterday = false;
+test($older, $newer, $showYesterday, "2 days ago");
+
+$older = mktime(12, 0, 0, 12, 30, 2014);
+$showYesterday = false;
+test($older, $newer, $showYesterday, "2 days ago");
+
+$older = mktime(13, 0, 0, 12, 30, 2014);
+$showYesterday = false;
+test($older, $newer, $showYesterday, "2 days ago");
+
 $older = mktime(12, 0, 0, 12, 30, 2014);
 $showYesterday = true;
 test($older, $newer, $showYesterday, "2 days ago");
+
+$older = mktime(13, 0, 0, 12, 25, 2014);
+$showYesterday = false;
+test($older, $newer, $showYesterday, "One week ago");
 
 $older = mktime(12, 0, 0, 12, 25, 2014);
 $showYesterday = true;

@@ -61,6 +61,9 @@ Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x ar
 
 == Changelog ==
 
+= 3.1.1 =
+* Bugfix: Fixed an unfortunate bug where the number of days would be wrong in some cases if "yesterday" was configured not to be shown.
+
 = 3.1.0 =
 * Bugfix: Remove hard coded "cet" string that was showed when waiting for AJAX call to finish.
 * New feature: Option to show number of hours instead of "yesterday" before 24 has passed. "Yesterday" don't always make sense if you're having an international audience. The default value is to show "yesterday", so there is no need to change anything unless you want to use the new option. See the installation instructions for details. 

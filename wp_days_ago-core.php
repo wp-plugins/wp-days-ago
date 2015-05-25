@@ -162,7 +162,9 @@ function timespanToString($t, $showYesterday = true) {
 
 function calculateTimespan($older, $newer, $showYesterday = true) { 
 
-	if($showYesterday && (($newer - $older > 86400) || (date("j", $newer) != date("j", $older) && $newer - $older < 86400))) {
+	if(!$showYesterday && ($newer - $older < 86400)) {
+		/* TODO: Fix this if-else-statement and merge it into one if-statement... */
+	} else if(($newer - $older > 86400) || (date("j", $newer) != date("j", $older) && $newer - $older < 86400)) {
 		$newer = mktime(0, 0, 0, date("n", $newer), date("j", $newer), date("Y", $newer));
 		$older = mktime(0, 0, 0, date("n", $older), date("j", $older), date("Y", $older));
 	}
