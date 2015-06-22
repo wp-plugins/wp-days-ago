@@ -19,6 +19,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 * Dutch (thanks to Marjolein Boer, [Pixelein](http://www.pixelein.nl/))
 * English
 * French (thanks to Alondi Commanda, [Alondi Consulting](http://www.alondiconsulting.com/))
+* German
 * Norwegian (bokmål)
 * Norwegian (nynorsk)
 * Persian (Farsi) (thanks to WordPress.org user famarini)
@@ -36,7 +37,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 
 = Usage =
 
-&lt;?php wp_days_ago_v3 ($stopUsingAjaxAfter, $showDateAfter, $showDateFormat, $showYesterday) ?&gt;
+&lt;?php wp_days_ago_v3 ($stopUsingAjaxAfter, $showDateAfter, $showDateFormat, $showYesterday); ?&gt;
 
 $stopUsingAjaxAfter
  (int) (optional) The number of seconds since a post or page was published before the plugin should stop using AJAX to display information. The default value is 0, which means the feature is turned off and AJAX is never used. If you have a cached site and the cache update interval is a day or less, 86400 (one day) is a good value for the plugin. The reason for this is that one day after a post or page was published, the plugin will start to show information in daily intervals ("yesterday", "2 days ago", "3 days ago", etc). If the post or page was published less than a day ago, the plugin will update in smaller intervals ("10 minutes ago", "3 hours ago", "4 hours ago", etc) and AJAX is needed to ensure that this is displayed correctly on a cached site. The minimum value should be the cache update interval.
@@ -60,6 +61,9 @@ In the POT file, there's a string called "prepender". This is for languages that
 Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed and no new features will be added. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgrade from version 2 or an even earlier version.
 
 == Changelog ==
+
+= 3.1.2 =
+* Added German translation.
 
 = 3.1.1 =
 * Bugfix: Fixed an unfortunate bug where the number of days would be wrong in some cases if "yesterday" was configured not to be shown.
