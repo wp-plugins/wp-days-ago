@@ -19,7 +19,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 * Dutch (thanks to Marjolein Boer, [Pixelein](http://www.pixelein.nl/))
 * English
 * French (thanks to Alondi Commanda, [Alondi Consulting](http://www.alondiconsulting.com/))
-* German(thanks to WordPress.org user ezkay)
+* German (thanks to WordPress.org user ezkay)
 * Norwegian (bokmål)
 * Norwegian (nynorsk)
 * Persian (Farsi) (thanks to WordPress.org user famarini)
