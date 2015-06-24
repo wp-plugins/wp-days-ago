@@ -19,7 +19,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 * Dutch (thanks to Marjolein Boer, [Pixelein](http://www.pixelein.nl/))
 * English
 * French (thanks to Alondi Commanda, [Alondi Consulting](http://www.alondiconsulting.com/))
-* German
+* German(thanks to WordPress.org user ezkay)
 * Norwegian (bokmål)
 * Norwegian (nynorsk)
 * Persian (Farsi) (thanks to WordPress.org user famarini)
@@ -63,7 +63,7 @@ Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x ar
 == Changelog ==
 
 = 3.1.2 =
-* Added German translation.
+* Added German translation (thanks to WordPress.org user ezkay).
 
 = 3.1.1 =
 * Bugfix: Fixed an unfortunate bug where the number of days would be wrong in some cases if "yesterday" was configured not to be shown.
