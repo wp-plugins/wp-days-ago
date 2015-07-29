@@ -8,10 +8,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-06-22 19:42+0100\n"
+"PO-Revision-Date: 2015-07-29 19:03+0200\n"
 "Last-Translator: Vegard Skjefstad <vegard@vegard.net>\n"
 "Language-Team: \n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: de\n"
 
@@ -21,7 +21,7 @@ msgstr "Jahr"
 
 #: wp_days_ago-core.php:62
 msgid "years"
-msgstr "Jahre"
+msgstr "Jahren"
 
 #: wp_days_ago-core.php:75
 msgid "month"
@@ -29,7 +29,7 @@ msgstr "Monat"
 
 #: wp_days_ago-core.php:77
 msgid "months"
-msgstr "Monate"
+msgstr "Monaten"
 
 #: wp_days_ago-core.php:89
 msgid "day"
@@ -45,7 +45,7 @@ msgstr "Eine Woche"
 
 #: wp_days_ago-core.php:97
 msgid "days"
-msgstr "Tage"
+msgstr "Tagen"
 
 #: wp_days_ago-core.php:109
 msgid "hour"
@@ -73,4 +73,4 @@ msgstr "vor"
 
 #: wp_days_ago-core.php:141
 msgid "ago"
-msgstr "her"
+msgstr "[none]"

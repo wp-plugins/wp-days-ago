@@ -153,11 +153,16 @@ function timespanToString($t, $showYesterday = true) {
 	}
 	
 	$prepender = __("prepender", "wp-days-ago");
-	if($prepender == "prepender") {
+	if($prepender == "prepender" || $prepender == "[none]") {
 		$prepender = "";
 	}
 	
-	return trim(($singular ? "" : " " . $prepender) . " " . $s . ($singular ? "" : " " . __("ago", "wp-days-ago"))); // AGO
+	$appender = __("ago", "wp-days-ago");
+	if($appender == "[none]") {
+		$appender = "";
+	}
+	
+	return trim(($singular ? "" : " " . $prepender) . " " . $s . ($singular ? "" : " " . $appender)); // AGO
 }
 
 function calculateTimespan($older, $newer, $showYesterday = true) { 

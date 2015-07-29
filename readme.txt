@@ -56,12 +56,18 @@ $showYesterday
  
 There's a POT file in the languages folder if you want to translate the plugin into another language. If you do that, I'd really appreciate it if you could provide me with the PO/POT and MO file so it can be included in future versions of the plugin. You will of course be credited for your work. 
 
-In the POT file, there's a string called "prepender". This is for languages that need to prepend a word before the number in the string. An example is Norwegian, which will prepend the word "for" before the number: "For 2 dager siden". "For" is the prepender. Some languages doesn't use the prepender, English being a natural example. The Norwegian example is "2 days ago" in English. If your language doesn't need to use a prepender, simply leave the string untranslated.
+In the POT file, there's a string called "prepender". This is for languages that need to prepend a word before the number in the string. An example is Norwegian, which will prepend the word "for" before the number: "For 2 dager siden". "For" is the prepender. Some languages doesn't use the prepender, English being a natural example. The Norwegian example is "2 days ago" in English. If your language doesn't need to use a prepender, simply translate the string "prepender" to "[none]" (without the quotes).
+
+This same is the case for the word "ago". If your language does not use this word, German is one example, simply translate the sting "ago" to  "[none]" (without the quotes).
  
 == Upgrade notice ==
 Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed and no new features will be added. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgrade from version 2 or an even earlier version.
 
 == Changelog ==
+
+= 3.1.4 =
+* Updated German translation.
+* Added support for not displaying the "ago" appender for translations that do not use it.
 
 = 3.1.3 =
 * Added Kurdish (Central Kurdish) translation.
