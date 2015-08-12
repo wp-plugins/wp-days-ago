@@ -1,6 +1,6 @@
 === wp-days-ago ===
 Contributors: vskjefst
-Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago, english, bengali, dutch, english, french, norwegian, norsk, bokmål, nynorsk, russian, spanish, swedish, turkish, persian, farsi, german, Deutsch, kuridsh
+Tags: facebook, twitter, posts, pages, date, day, days, hours, minutes, relative date, years ago, months ago, days ago, hours ago, minutes ago, english, bengali, dutch, english, french, norwegian, norsk, bokmål, nynorsk, russian, spanish, swedish, turkish, persian, farsi, german, Deutsch, kuridsh, ukranian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28LC77UW3XFBY&lc=NO&item_name=www%2evegard%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 2.1
 Tested up to: 4.3
@@ -28,6 +28,7 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 * Spanish (thanks to Andrew Kurtis, [WebHostingHub](http://www.webhostinghub.com/))
 * Swedish
 * Turkish
+* Ukranian (thanks to [Alexander Avramenko](http://twitter.com/avramch))
 
 == Installation ==
 
@@ -65,6 +66,9 @@ Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x ar
 
 == Changelog ==
 
+= 3.1.5 =
+* Added Ukranian translation (thanks to [Alexander Avramenko](http://twitter.com/avramch)).
+
 = 3.1.4 =
 * Updated German translation.
 * Added support for not displaying the "ago" appender for translations that do not use it.
@@ -93,7 +97,7 @@ Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x ar
 
 = 3.0.4 =
 * Added Bengali translation (thanks to Mahmud, C.E.O, S. M. Foundation).
-* Added French translation (thanks to Alondi Commanda, [Alondi Consulting](http://www.alondiconsulting.com/))
+* Added French translation (thanks to Alondi Commanda, [Alondi Consulting](http://www.alondiconsulting.com/)).
 
 = 3.0.3 =
 * Added Dutch translation (thanks to Marjolein Boer, [Pixelein](http://www.pixelein.nl/)).
