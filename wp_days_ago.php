@@ -4,7 +4,7 @@ include("wp_days_ago-core-old.php");
 
 /*
 Plugin Name: wp-days-ago
-Version: 3.1.5
+Version: 3.2
 Plugin URI: http://wordpress.org/extend/plugins/wp-days-ago/
 Author: Vegard Skjefstad
 Author URI: http://www.vegard.net/
@@ -32,7 +32,7 @@ function init_wp_days_ago() {
 }
 
 function wp_days_ago_enqueue_scripts() {
-	wp_enqueue_script( "wp_days_ago", plugin_dir_url( __FILE__ ) . "/wp_days_ago.js", array( "jquery" ), "3.1.1");
+	wp_enqueue_script( "wp_days_ago", plugin_dir_url( __FILE__ ) . "/wp_days_ago.js", array( "jquery" ), "3.2");
 	wp_localize_script( "wp_days_ago", "wp_days_ago_script", array( "ajaxurl" => admin_url( "admin-ajax.php" ) ) );	
 }
 add_action("init", "init_wp_days_ago");

@@ -6,11 +6,11 @@ Requires at least: 2.1
 Tested up to: 4.3
 Stable tag: trunk
 
-Displays the number of years, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc.
+Displays the number of years, days, hours and minutes since a post or a page was published or modified, or a comment was published, in the same format as Facebook, Twitter etc.
 
 == Description ==
 
-This plugin displays the number of years, months, days, hours and minutes since a post or a page was published in the same format as Facebook, Twitter etc. Examples are "Just now" (less than a minute ago), "47 minutes ago" (less than an hour ago), "3 hours ago" (less than a day ago), "Yesterday", "3 days ago", "One week ago", "3 months ago", "3 months, 4 days ago", "2 years, 13 days ago" and so on. It's also possible to configure wp-days-ago to fall back to displaying the actual date and time when a post or page was published when a certain number of seconds after publishing time has been reached.
+This plugin displays the number of years, months, days, hours and minutes since a post or a page was published or modified, or a comment was published, in the same format as Facebook, Twitter etc. Examples are "Just now" (less than a minute ago), "47 minutes ago" (less than an hour ago), "3 hours ago" (less than a day ago), "Yesterday", "3 days ago", "One week ago", "3 months ago", "3 months, 4 days ago", "2 years, 13 days ago" and so on. It's also possible to configure wp-days-ago to fall back to displaying the actual date and time when a certain number of seconds after publishing time has been reached.
 
 Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the use of AJAX. This means that the plugin will show correct information even if the page is cached. Please see the installation instructions, and the stopUsingAjaxAfter parameter in particular, for details.
 
@@ -35,11 +35,11 @@ Cache plugins, like W3 Total Cache and WP Super Cache, are supported through the
 1. [Download](http://downloads.wordpress.org/plugin/wp-days-ago.zip) the plugin.
 2. Unzip the contents of the downloaded file to the /wp-content/plugins/ directory of your WordPress installation.
 3. Log in to your WordPress dashboard and activate the wp_days_ago plugin that should now be visible in the list.
-4. You can now insert &lt;? wp_days_ago_v3(); ?&gt; anywhere in [The Loop](http://codex.wordpress.org/The_Loop) in your WordPress theme.
+4. You can now insert &lt;? wp_days_ago_v3(); ?&gt; anywhere in [The Loop](http://codex.wordpress.org/The_Loop) for either posts or comments in your WordPress theme.
 
 = Usage =
 
-&lt;?php wp_days_ago_v3 ($stopUsingAjaxAfter, $showDateAfter, $showDateFormat, $showYesterday); ?&gt;
+&lt;?php wp_days_ago_v3 ($stopUsingAjaxAfter, $showDateAfter, $showDateFormat, $showYesterday, $context); ?&gt;
 
 $stopUsingAjaxAfter
  (int) (optional) The number of seconds since a post or page was published before the plugin should stop using AJAX to display information. The default value is 0, which means the feature is turned off and AJAX is never used. If you have a cached site and the cache update interval is a day or less, 86400 (one day) is a good value for the plugin. The reason for this is that one day after a post or page was published, the plugin will start to show information in daily intervals ("yesterday", "2 days ago", "3 days ago", etc). If the post or page was published less than a day ago, the plugin will update in smaller intervals ("10 minutes ago", "3 hours ago", "4 hours ago", etc) and AJAX is needed to ensure that this is displayed correctly on a cached site. The minimum value should be the cache update interval.
@@ -52,6 +52,9 @@ $showDateFormat
  
 $showYesterday
  (boolean) (optional) Option to show the text "yesterday" if there is less than 24 hours since the post or page was published. Otherwise, the number of hours since the post or page was published will be showed until more than 24 hours have passed. Then, the number of days, etc, will be shown. The default value is true.
+ 
+$context
+ (int) (optional) The plugin needs to know in what context it's called. Available values are 1 (post/page published date), 2 (post/page last modified date), and 3 (comment published date). So if you want to show use the plugin to display a post's modified date, you use 2 as context when calling the plugin in your post/page loop. For comments published date, use 3 as context in your comments loop. The default value is 1.
 
 = Information for translators =
  
@@ -65,6 +68,9 @@ This same is the case for the word "ago". If your language does not use this wor
 Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed and no new features will be added. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgrade from version 2 or an even earlier version.
 
 == Changelog ==
+
+= 3.2 =
+* New feature: The plugin can now also be used to show posts/pages modified dates, and comments published dates.
 
 = 3.1.5 =
 * Added Ukranian translation (thanks to [Alexander Avramenko](http://twitter.com/avramch)).

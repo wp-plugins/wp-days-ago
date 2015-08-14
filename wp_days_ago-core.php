@@ -1,17 +1,30 @@
 <?php
 
-function wp_days_ago_v3 ($stopUsingAjaxAfter = 0, $showDateAfter = -1, $showDateFormat = null, $showYesterday = true) {
-	$post_id = get_the_ID();
-	$the_time = get_post_time("U", true, $post_id);
+function wp_days_ago_v3 ($stopUsingAjaxAfter = 0, $showDateAfter = -1, $showDateFormat = null, $showYesterday = true, $context = 1) {
+	
+	if ($context <= 1 || $context > 3) {
+		$id = get_the_ID();
+		$the_time = get_post_time("U", true, $id);
+		$ajax_wait_time = get_post_time("H:i", false, $id);
+	} else if ($context === 2) {
+		$id = get_the_ID();
+		$the_time = get_post_modified_time("U", true, $id);
+		$ajax_wait_time = get_post_modified_time("H:i", false, $id);
+	}  else if ($context === 3) {
+		$id = get_comment_ID();
+		$the_time = get_comment_time("U", true, $id);
+		$ajax_wait_time = get_comment_time("H:i", false, $id);
+	}
+	
 	if(gmmktime() - $the_time > $stopUsingAjaxAfter) {
-		echo wp_days_ago_internal_v3($the_time, $post_id, $showDateAfter, $showDateFormat, $showYesterday);
+		echo wp_days_ago_internal_v3($the_time, $id, $showDateAfter, $showDateFormat, $showYesterday);
 	} else {
 		echo "<script type=\"text/javascript\"><!--\n";
 		echo "jQuery(document).ready(function(){";
-		echo "get_wp_days_ago_v3(" . $post_id . ", '" . $showDateAfter . "', '" . $showDateFormat . "', '" . $showYesterday . "');";
+		echo "get_wp_days_ago_v3(" . $id . ", '" . $the_time . "', '" . $showDateAfter . "', '" . $showDateFormat . "', '" . $showYesterday . "', '" . $context . "');";
 		echo "})\n";
 		echo "--></script>\n";
-		echo "<span class=\"wp_days_ago\" id=\"wp_days_ago-" . $post_id . "\">" . get_post_time("H:i", false, $post_id) . "</span>";
+		echo "<span class=\"wp_days_ago\" id=\"wp_days_ago-" . $context . "-" . $id . "\">" . $ajax_wait_time . "</span>";
 	}
 }
 
@@ -26,7 +39,8 @@ function wp_days_ago_ajax_handler_v3 () {
 	} else {
 		$showYesterday = true;
 	}
-	die(wp_days_ago_internal_v3(get_post_time("U", true, $_POST["postId"]), $_POST["postId"], $_POST["showDateAfter"], $showDateFormat, $showYesterday));
+		
+	die(wp_days_ago_internal_v3($_POST["time"], $_POST["id"], $_POST["showDateAfter"], $showDateFormat, $showYesterday));
 }
 
 function wp_days_ago_internal_v3 ($the_time, $postId, $showDateAfter = -1, $showDateFormat = null, $showYesterday = true) {
