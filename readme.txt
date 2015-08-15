@@ -6,7 +6,7 @@ Requires at least: 2.1
 Tested up to: 4.3
 Stable tag: trunk
 
-Displays the number of years, days, hours and minutes since a post or a page was published or modified, or a comment was published, in the same format as Facebook, Twitter etc.
+Displays the number of years, months, days, hours and minutes since a post or a page was published or modified, or a comment was published.
 
 == Description ==
 
@@ -65,7 +65,7 @@ In the POT file, there's a string called "prepender". This is for languages that
 This same is the case for the word "ago". If your language does not use this word, German is one example, simply translate the sting "ago" to  "[none]" (without the quotes).
  
 == Upgrade notice ==
-Version 3.0.0 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed and no new features will be added. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgrade from version 2 or an even earlier version.
+Version 3 is a complete rewrite of the plugin. Functions from version 2.x are still available to ensure backwards compatibility and will continue to work as they used to, but bugs will not be fixed and no new features will be added. It's highly recommended that you start to use the _v3 methods described in the installation instructions if you upgrade from version 2 or an even earlier version.
 
 == Changelog ==
 
